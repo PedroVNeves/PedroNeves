@@ -1,938 +1,884 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Neves</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Pedro Neves | Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Pedro Neves, a Young Developer specializing in Web Development, AI, and Data Analysis.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* Estilos personalizados que podem ser adicionados além do Tailwind */
-        html {
-            scroll-behavior: smooth;
-        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Uma fonte moderna, você pode mudar */
-            background-color: #0d1117;
-            /* Um fundo escuro, como muitos portfólios tech */
-            color: #c9d1d9;
-            /* Cor de texto claro para contraste */
-        }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* --- Efeito de Borda RGB com Hue Rotation --- */
-        /* Classe base para aplicar a borda animada */
-        .rgb-border {
-            position: relative;
-            z-index: 1;
-            /* Garante que o conteúdo fique acima do pseudo-elemento */
-            overflow: hidden;
-            /* Garante que a borda "corte" corretamente */
-            border: 2px solid transparent;
-            /* Borda transparente inicial */
-        }
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-        /* Pseudo-elemento para a borda animada */
-        .rgb-border::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            /* Ajuste para cobrir a borda real */
-            left: -2px;
-            /* Ajuste para cobrir a borda real */
-            right: -2px;
-            /* Ajuste para cobrir a borda real */
-            bottom: -2px;
-            /* Ajuste para cobrir a borda real */
-            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 400% 400%;
-            /* Permite que o gradiente se mova */
-            z-index: -1;
-            /* Fica abaixo do conteúdo do botão */
-            border-radius: inherit;
-            /* Herda o arredondamento do botão */
-            animation: gradient-shift 10s ease infinite;
-            /* Animação do gradiente */
-        }
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
 
-        /* Animação do gradiente para o efeito RGB */
-        @keyframes gradient-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',   /* Indigo 500 */
+                        secondary: '#ec4899', /* Pink 500 */
+                        accent: '#8b5cf6',    /* Violet 500 */
+                        dark: '#0f172a',      /* Slate 900 */
+                    }
+                }
             }
         }
-
-        /* --- Fim do Efeito de Borda RGB --- */
-
-        /* Estilos para o botão de idioma */
-        .language-toggle {
-            display: flex;
-            background-color: #1a202c;
-            border-radius: 9999px;
-            padding: 4px;
-            cursor: pointer;
-        }
-
-        .language-toggle .lang-option {
-            padding: 3px 8px;
-            border-radius: 9999px;
-            font-weight: 600;
-            color: #a0aec0;
-            transition: all 0.3s ease;
-        }
-
-        .language-toggle .lang-option.active {
-            background-color: #1b2db8;
-            color: #ffffff;
-        }
-    </style>
+    </script>
 </head>
 
-<body class="antialiased">
+<body
+    class="bg-dark text-slate-200 font-sans antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden">
 
-    <nav class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-white hover:text-blue-400 transition duration-300">
-                <span class="text-blue-400">&lt;</span>Pedro Neves<span class="text-blue-400">/&gt;</span>
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/20 rounded-full blur-[120px] animate-float">
+        </div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-fuchsia-600/20 rounded-full blur-[120px] animate-float"
+            style="animation-delay: -3s;"></div>
+        <div
+            class="absolute top-[40%] left-[40%] w-[20%] h-[20%] bg-blue-600/10 rounded-full blur-[100px] animate-pulse">
+        </div>
+        <div class="mesh-gradient absolute inset-0 opacity-30"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 p-4" id="navbar">
+        <div class="glass rounded-2xl container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-heading tracking-tight group">
+                <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-fuchsia-400 group-hover:to-indigo-400 transition-all duration-500">Pedro
+                    Neves</span>
             </a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#hero"
-                    class="text-white hover:text-blue-400 transition duration-300 border border-blue-500 bg-blue-600 bg-opacity-20 px-4 py-1 rounded-md flex items-center">
-                    <i class="fas fa-home mr-2"></i> <span key-language="home-nav">Início</span>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#inicio" class="nav-link text-sm font-medium hover:text-white transition-colors relative group"
+                    key-language="home-nav">
+                    Início
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#sobre"
-                    class="text-white hover:text-blue-400 transition duration-300 border border-blue-500 bg-blue-600 bg-opacity-20 px-4 py-1 rounded-md flex items-center">
-                    <i class="fas fa-user mr-2"></i> <span key-language="about-nav">Sobre Mim</span>
+                <a href="#sobre" class="nav-link text-sm font-medium hover:text-white transition-colors relative group"
+                    key-language="about-nav">
+                    Sobre Mim
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#habilidades"
+                    class="nav-link text-sm font-medium hover:text-white transition-colors relative group"
+                    key-language="skills-nav">
+                    Habilidades
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#projetos"
-                    class="text-white hover:text-blue-400 transition duration-300 border border-blue-500 bg-blue-600 bg-opacity-20 px-4 py-1 rounded-md flex items-center">
-                    <i class="fas fa-folder-open mr-2"></i> <span key-language="projects-nav">Projetos</span>
+                    class="nav-link text-sm font-medium hover:text-white transition-colors relative group"
+                    key-language="projects-nav">
+                    Projetos
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#certificados"
-                    class="text-white hover:text-blue-400 transition duration-300 border border-blue-500 bg-blue-600 bg-opacity-20 px-4 py-1 rounded-md flex items-center">
-                    <i class="fas fa-award mr-2"></i> <span key-language="certificates-nav">Certificados</span>
+                <a href="#educacao"
+                    class="nav-link text-sm font-medium hover:text-white transition-colors relative group"
+                    key-language="certificates-nav">
+                    Educação
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#contato"
-                    class="text-white hover:text-blue-400 transition duration-300 border border-blue-500 bg-blue-600 bg-opacity-20 px-4 py-1 rounded-md flex items-center">
-                    <i class="fas fa-envelope mr-2"></i> <span key-language="contact-nav">Contato</span>
+                    class="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-300 text-sm font-medium"
+                    key-language="contact-nav">
+                    Contato
                 </a>
-                <div id="language-toggle" class="language-toggle">
-                    <span class="lang-option active" data-lang="pt">PT</span>
-                    <span class="lang-option" data-lang="en">EN</span>
+
+                <!-- Language Toggle -->
+                <div class="language-toggle" id="language-toggle">
+                    <div class="lang-option active" data-lang="pt">PT</div>
+                    <div class="lang-option" data-lang="en">EN</div>
                 </div>
             </div>
-            <div class="md:hidden flex items-center">
-                <div id="language-toggle-mobile" class="language-toggle mr-4">
-                    <span class="lang-option active" data-lang="pt">PT</span>
-                    <span class="lang-option" data-lang="en">EN</span>
-                </div>
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2">
-            <a href="#hero" class="block px-6 py-2 text-white hover:bg-gray-700 transition duration-300"><span
-                    key-language="home-mobile-nav">Início</span></a>
-            <a href="#sobre" class="block px-6 py-2 text-white hover:bg-gray-700 transition duration-300"><span
-                    key-language="about-mobile-nav">Sobre Mim</span></a>
-            <a href="#projetos" class="block px-6 py-2 text-white hover:bg-gray-700 transition duration-300"><span
-                    key-language="projects-mobile-nav">Projetos</span></a>
-            <a href="#certificados" class="block px-6 py-2 text-white hover:bg-gray-700 transition duration-300"><span
-                    key-language="certificates-mobile-nav">Certificados</span></a>
-            <a href="#contato" class="block px-6 py-2 text-white hover:bg-gray-700 transition duration-300"><span
-                    key-language="contact-mobile-nav">Contato</span></a>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden absolute top-20 left-4 right-4 glass rounded-2xl p-6 flex flex-col gap-4"
+            id="mobile-menu">
+            <a href="#inicio" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="home-mobile-nav">Início</a>
+            <a href="#sobre" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="about-mobile-nav">Sobre Mim</a>
+            <a href="#habilidades" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="skills-mobile-nav">Habilidades</a>
+            <a href="#projetos" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="projects-mobile-nav">Projetos</a>
+            <a href="#educacao" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="certificates-mobile-nav">Educação</a>
+            <a href="#contato" class="text-center py-2 hover:bg-white/5 rounded-lg transition"
+                key-language="contact-mobile-nav">Contato</a>
+            <div class="flex justify-center mt-2">
+                <div class="language-toggle" id="language-toggle-mobile">
+                    <div class="lang-option active" data-lang="pt">PT</div>
+                    <div class="lang-option" data-lang="en">EN</div>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <section id="hero"
-        class="h-screen flex items-center justify-center text-center bg-gradient-to-br from-gray-900 to-black relative">
-        <div class="absolute inset-0 bg-cover bg-center opacity-10"></div>
-        <div class="z-10 p-6" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4" key-language="hero-title">
-                Olá, sou <span class="text-blue-400">Pedro Neves</span>.
+    <!-- Hero Section -->
+    <header id="inicio" class="min-h-screen flex items-center justify-center relative pt-20">
+        <div class="container mx-auto px-6 text-center z-10">
+            <div
+                class="inline-block mb-4 px-4 py-1.5 rounded-full glass border border-indigo-500/30 text-indigo-300 text-sm font-medium animate-fade-in-down">
+                👋 Bem-vindo ao meu portfólio
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold font-heading mb-6 leading-tight animate-fade-in-up">
+                Olá, sou <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-blue-400 animate-gradient">Pedro
+                    Neves</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8" key-language="hero-subtitle">
-                Um <span class="font-bold text-blue-300">Jovem Desenvolvedor</span> buscando inovação.
+            <p class="text-xl md:text-2xl text-slate-400 mb-10 max-w-2xl mx-auto font-light animate-fade-in-up"
+                style="animation-delay: 0.2s;" key-language="hero-subtitle">
+                Um <span class="font-semibold text-indigo-300">Jovem Desenvolvedor</span> transformando ideias em
+                inovação digital.
             </p>
 
-            <div class="flex flex-wrap justify-center gap-4 mt-8">
-                <span class="bg-blue-600 bg-opacity-20 text-white text-sm md:text-base px-4 py-2 rounded-full shadow-lg"
-                    data-aos="zoom-in" data-aos-delay="200" key-language="skill-english">Inglês Avançado (C1)</span>
+            <div class="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up" style="animation-delay: 0.4s;">
                 <span
-                    class="bg-purple-600 bg-opacity-20 text-white text-sm md:text-base px-4 py-2 rounded-full shadow-lg"
-                    data-aos="zoom-in" data-aos-delay="400" key-language="skill-webdev">Desenvolvedor Web</span>
+                    class="px-4 py-2 rounded-lg glass border border-white/5 text-sm text-slate-300 hover:border-indigo-500/50 transition-colors duration-300">
+                    <i class="fas fa-code text-indigo-400 mr-2"></i>Web Dev
+                </span>
                 <span
-                    class="bg-green-600 bg-opacity-20 text-white text-sm md:text-base px-4 py-2 rounded-full shadow-lg"
-                    data-aos="zoom-in" data-aos-delay="600" key-language="skill-ai">Inteligência Artificial</span>
-                <span class="bg-red-600 bg-opacity-20 text-white text-sm md:text-base px-4 py-2 rounded-full shadow-lg"
-                    data-aos="zoom-in" data-aos-delay="800" key-language="skill-dataanalysis">Análise de Dados</span>
+                    class="px-4 py-2 rounded-lg glass border border-white/5 text-sm text-slate-300 hover:border-fuchsia-500/50 transition-colors duration-300">
+                    <i class="fas fa-brain text-fuchsia-400 mr-2"></i>AI & ML
+                </span>
                 <span
-                    class="bg-yellow-600 bg-opacity-40 text-white text-sm md:text-base px-4 py-2 rounded-full shadow-lg"
-                    data-aos="zoom-in" data-aos-delay="1000" key-language="skill-entrepreneurial">Pensamento
-                    Empreendedor</span>
+                    class="px-4 py-2 rounded-lg glass border border-white/5 text-sm text-slate-300 hover:border-blue-500/50 transition-colors duration-300">
+                    <i class="fas fa-chart-bar text-blue-400 mr-2"></i>Data Analysis
+                </span>
+            </div>
+
+            <div class="flex justify-center gap-6 animate-fade-in-up" style="animation-delay: 0.6s;">
+                <a href="https://github.com/PedroVNeves" target="_blank"
+                    class="w-12 h-12 flex items-center justify-center rounded-full glass hover:bg-white/10 hover:scale-110 transition-all duration-300 border border-white/10">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/pedro-vasconcelos-neves" target="_blank"
+                    class="w-12 h-12 flex items-center justify-center rounded-full glass hover:bg-blue-600/20 hover:scale-110 transition-all duration-300 border border-white/10">
+                    <i class="fab fa-linkedin-in text-xl text-blue-400"></i>
+                </a>
+                <a href="mailto:pedro.vasconcelosneves@gmail.com"
+                    class="w-12 h-12 flex items-center justify-center rounded-full glass hover:bg-indigo-600/20 hover:scale-110 transition-all duration-300 border border-white/10">
+                    <i class="fas fa-envelope text-xl text-indigo-400"></i>
+                </a>
             </div>
         </div>
-        <button id="scroll-down-button" aria-label="Rolar para baixo"
-            class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white hover:text-blue-400">
-            <i class="fas fa-chevron-down text-3xl animate-bounce"></i>
-        </button>
-    </section>
 
-    <section id="sobre" class="py-20 bg-gray-800">
-        <div class="container mx-auto px-6" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-white text-center mb-12" key-language="about-title">Sobre Mim</h2>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <div class="md:w-1/3">
-                    <img src="assets/profile.png" alt="=Aqui vai ter uma foto minha"
-                        class="rounded-full shadow-xl mx-auto border-4 border-blue-500" data-aos="zoom-in"
-                        data-aos-delay="200">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+            id="scroll-down-button">
+            <i class="fas fa-chevron-down text-slate-500 text-2xl hover:text-white transition-colors"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image -->
+                <div class="w-full md:w-1/3 flex justify-center" data-aos="fade-right">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-fuchsia-500 rounded-full blur-2xl opacity-50 animate-pulse">
+                        </div>
+                        <img src="assets/profile.png" alt="Pedro Neves"
+                            class="relative w-full h-full object-cover rounded-full border-4 border-white/10 shadow-2xl z-10">
+                        <div class="absolute -bottom-4 -right-4 glass px-4 py-2 rounded-xl border border-white/20 z-20 animate-float"
+                            style="animation-delay: 1s;">
+                            <span class="text-sm font-bold">🚀 17 Anos</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-2/3 text-lg text-gray-300 text-center md:text-left space-y-12">
-                    <p class="mb-4" key-language="about-p1">
-                        Sou um jovem de 17 anos, apaixonado por tecnologia e inovação, com uma jornada de aprendizado
-                        contínuo. Atualmente, estou finalizando o terceiro ano do ensino médio e sempre
-                        buscando aplicar o conhecimento em criar coisas novas.
-                    </p>
-                    <p class="mb-4" key-language="about-p2">
-                        Minha experiência inclui o desenvolvimento de landing pages para projetos como o SigmaChallenge,
-                        demonstrando minha habilidade em criar interfaces web eficazes. Tenho um forte interesse em
-                        Inteligência Artificial, onde já desenvolvi um modelo que detecta emoções usando OpenCV.
-                    </p>
-                    <p class="mb-4" key-language="about-p3">
-                        Sou um entusiasta de competições acadêmicas, sendo medalhista da OBMEP e da OAM. Fui aprovado no
-                        presticioso programa "Daqui Pra o Mundo", que me proporcionou um intercâmbio na Inglaterra.
-                        Também fui aceito no SigmaCamp Next 2025, uma prova do meu potencial na área de exatas.
-                    </p>
-                    <p key-language="about-p4">
-                        No NES, cursei módulos avançados que aprofundaram meus conhecimentos em: Programação Estruturada
-                        e Orientada a Objetos, Cálculos, Álgebra Linear, Probabilidade e Estatística, Estrutura de Dados
-                        e Algoritmos, e Inteligência Artificial. Estou agora ingressando no Módulo IV, expandindo ainda
-                        mais minhas habilidades.
-                    </p>
+
+                <!-- Content -->
+                <div class="w-full md:w-2/3" data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 flex items-center gap-4"
+                        key-language="about-title">
+                        Sobre Mim <div class="h-1 w-20 bg-indigo-500 rounded-full"></div>
+                    </h2>
+
+                    <div class="glass-card p-8 rounded-3xl space-y-6 text-slate-300 leading-relaxed">
+                        <p key-language="about-p1">
+                            Sou um jovem de 17 anos, apaixonado por tecnologia e inovação, com uma jornada de
+                            aprendizado contínuo no NES. Atualmente, estou finalizando o terceiro ano do ensino médio e
+                            sempre buscando aplicar o conhecimento em projetos práticos.
+                        </p>
+                        <p key-language="about-p2">
+                            Minha experiência inclui o desenvolvimento de landing pages para projetos como o
+                            SigmaChallenge, demonstrando minha habilidade em criar interfaces web eficazes. Tenho um
+                            forte interesse em Inteligência Artificial, onde já desenvolvi um modelo que detecta emoções
+                            usando OpenCV.
+                        </p>
+                        <p key-language="about-p3">
+                            Sou um entusiasta de competições acadêmicas, sendo medalhista da OBMEP e da OAM. Fui
+                            aprovado no prestigioso programa "Daqui Pra o Mundo", que me proporcionou um intercâmbio na
+                            Inglaterra.
+                        </p>
+
+                        <div class="pt-4">
+                            <a href="#contato"
+                                class="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors group">
+                                Vamos conversar <i
+                                    class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-white text-center mb-12" key-language="skills-title">Minhas Habilidades
-            </h2>
+    <!-- Skills Section -->
+    <section id="habilidades" class="py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" key-language="skills-title">Minhas
+                    Habilidades</h2>
+                <div class="w-24 h-1 bg-fuchsia-500 mx-auto rounded-full"></div>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div data-aos="fade-right" data-aos-delay="100">
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-6" key-language="skills-technical-title">Técnicas
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3"
+                        key-language="skills-technical-title">
+                        <i class="fas fa-laptop-code text-indigo-400"></i> Hard Skills
+                    </h3>
+
+                    <div class="space-y-8">
+                        <!-- Python/JS -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-slate-300"
+                                    key-language="skill-programming-languages">Linguagens (Python, Java)</span>
+                                <span class="text-indigo-400">90%</span>
+                            </div>
+                            <div class="h-2 bg-dark/50 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-gradient-to-r from-indigo-500 to-blue-500 w-[90%] rounded-full relative">
+                                    <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Web Dev -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-slate-300"
+                                    key-language="skill-web-development">Desenvolvimento Web</span>
+                                <span class="text-fuchsia-400">85%</span>
+                            </div>
+                            <div class="h-2 bg-dark/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-fuchsia-500 to-pink-500 w-[85%] rounded-full">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI/ML -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-slate-300" key-language="skill-ai-ml">IA & Machine
+                                    Learning</span>
+                                <span class="text-emerald-400">75%</span>
+                            </div>
+                            <div class="h-2 bg-dark/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 w-[75%] rounded-full">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Analysis -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-slate-300" key-language="skill-data-analysis">Análise de
+                                    Dados</span>
+                                <span class="text-amber-400">80%</span>
+                            </div>
+                            <div class="h-2 bg-dark/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 w-[80%] rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complementary Skills -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-language text-indigo-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" key-language="skill-advanced-english">Inglês
+                            Avançado (C1)</h4>
+                        <p class="text-sm text-slate-400">Fluência para comunicação global.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-fuchsia-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-lightbulb text-fuchsia-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" key-language="skill-entrepreneurial-thinking">
+                            Empreendedorismo</h4>
+                        <p class="text-sm text-slate-400">Visão de negócios e inovação.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-puzzle-piece text-blue-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" key-language="skill-problem-solving">Resolução de
+                            Problemas</h4>
+                        <p class="text-sm text-slate-400">Pensamento analítico e crítico.</p>
+                    </div>
+
+                    <!-- Wakatime Badge -->
+                    <div
+                        class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 flex flex-col justify-center items-center">
+                        <h4 class="text-sm font-bold text-slate-300 mb-3" key-language="skill-time-coded">Tempo de
+                            Código</h4>
+                        <figure><img
+                                src="https://wakatime.com/badge/user/cc389d26-71f3-4d80-915a-2c56372ee434.svg" alt="Total time coded since Oct 27 2024"></embed>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projetos" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" key-language="projects-title">Meus Projetos
+                </h2>
+                <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Private Projects -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold text-indigo-400 mb-8 flex items-center gap-3" data-aos="fade-right"
+                    key-language="projects-private-title">
+                    <i class="fas fa-lock"></i> Projetos Privados
+                </h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- SigmaChallenge -->
+                    <div class="glass-card p-6 rounded-2xl group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up">
+                        <div class="overflow-hidden rounded-xl mb-6 border border-white/10">
+                            <img src="assets/SigmaChallengeLP.png" alt="SigmaChallenge"
+                                class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3" key-language="project-sigmachallenge-title">
+                            SigmaChallenge - Landing Page</h4>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed"
+                            key-language="project-sigmachallenge-description">
+                            Desenvolvimento de uma landing page otimizada para captação de leads em um projeto privado
+                            de inovação.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pb-6">
+                            <span
+                                class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs border border-indigo-500/30">Web
+                                Dev</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs border border-blue-500/30">TypeScript</span>
+                        </div>
+                        <a href="https://sigmachallenge.com.br" target="_blank"
+                            class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 flex items-center gap-2 mt-auto pl-1">
+                            Acessar o Site <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Canguru -->
+                    <div class="glass-card p-6 rounded-2xl group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="overflow-hidden rounded-xl mb-6 border border-white/10 relative bg-dark/50 flex items-center justify-center h-56">
+                            <span class="text-slate-500 font-medium flex items-center gap-2">
+                                <img src="assets/canguru.jpeg" alt="SigmaChallenge"
+                                    class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-500">
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3" key-language="project-SiteCanguru-title">Canguru</h4>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed"
+                            key-language="project-SiteCanguru-description">
+                            Site educativo para treinamento de profissionais de saúde e famílias de recém-nascidos de
+                            alto risco.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs border border-emerald-500/30">Saúde</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-fuchsia-500/20 text-fuchsia-300 text-xs border border-fuchsia-500/30">Educação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Public Projects -->
+            <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-8 flex items-center gap-3" data-aos="fade-right"
+                    key-language="projects-public-title">
+                    <i class="fab fa-github"></i> Projetos Públicos
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Emotion Detection -->
+                    <div class="glass-card p-6 rounded-2xl flex flex-col group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up">
+                        <div class="overflow-hidden rounded-xl mb-6 border border-white/10">
+                            <img src="assets/RealTimeEmotionDetection.png" alt="Emotion Detection"
+                                class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-3" key-language="project-emotion-detection-title">
+                            Realtime Emotion Detection</h4>
+                        <p class="text-slate-400 mb-6 text-sm flex-grow"
+                            key-language="project-emotion-detection-description">
+                            Modelo de IA que detecta e classifica emoções faciais em tempo real via webcam.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">Python</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">AI/ML</span>
+                        </div>
+                        <a href="https://github.com/PedroVNeves/Realtime-Emotion-Detection" target="_blank"
+                            class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 flex items-center gap-2 mt-auto">
+                            Ver no GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Daqui Pra o Mundo -->
+                    <div class="glass-card p-6 rounded-2xl flex flex-col group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div class="overflow-hidden rounded-xl mb-6 border border-white/10">
+                            <img src="assets/DaquiPraoMundoLP.png" alt="Daqui Pra o Mundo"
+                                class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-3" key-language="project-daquipraomundo-title">
+                            Projeto "Daqui Pra o Mundo"</h4>
+                        <p class="text-slate-400 mb-6 text-sm flex-grow"
+                            key-language="project-daquipraomundo-description">
+                            Website interativo para programa de intercâmbio, desenvolvido com HTML, Tailwind e JS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">HTML/CSS</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">JS</span>
+                        </div>
+                        <a href="https://github.com/PedroVNeves/LPDPM" target="_blank"
+                            class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 flex items-center gap-2 mt-auto">
+                            Ver no GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- College Board -->
+                    <div class="glass-card p-6 rounded-2xl flex flex-col group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div class="overflow-hidden rounded-xl mb-6 border border-white/10">
+                            <img src="assets/CollegeBoard.png" alt="College Board"
+                                class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-3" key-language="project-CollegeBoard-title">College
+                            Board</h4>
+                        <p class="text-slate-400 mb-6 text-sm flex-grow"
+                            key-language="project-CollegeBoard-description">
+                            Simulação de probabilidade de aprovação em universidades baseada em notas SAT.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">React</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">Data</span>
+                        </div>
+                        <a href="https://github.com/TiagoCavalcante/NES-final-project" target="_blank"
+                            class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 flex items-center gap-2 mt-auto">
+                            Ver no GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- RAG Local -->
+                    <div class="glass-card p-6 rounded-2xl flex flex-col group hover:-translate-y-2 transition duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div class="overflow-hidden rounded-xl mb-6 border border-white/10">
+                            <img src="assets/RAG_LOCAL.png" alt="RAG Local"
+                                class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-3" key-language="project-RAG_LOCAL-title">RAG Local
+                        </h4>
+                        <p class="text-slate-400 mb-6 text-sm flex-grow">
+                            Implementação de Retrieval-Augmented Generation rodando localmente.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">Python</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-slate-300 text-xs">LLMs</span>
+                        </div>
+                        <a href="https://github.com/PedroVNeves/RAG_Local" target="_blank"
+                            class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 flex items-center gap-2 mt-auto">
+                            Ver no GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="https://github.com/PedroVNeves" target="_blank"
+                        class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 text-white font-medium group">
+                        <i class="fab fa-github text-xl"></i> Ver Mais Projetos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certificates Section -->
+    <section id="educacao" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" key-language="education-title">Educação &
+                    Conquistas</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Olympiads -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3"
+                        key-language="olympiads-title">
+                        <i class="fas fa-medal text-yellow-400"></i> Olimpíadas
                     </h3>
                     <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-programming-languages">Linguagens
-                                    de Programação (Python, JS, etc.)</span>
-                                <span class="text-gray-400 text-sm">90%</span>
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-trophy text-yellow-400"></i>
                             </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-blue-600 h-3 rounded-full" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-web-development">Desenvolvimento
-                                    Web (Front-end)</span>
-                                <span class="text-gray-400 text-sm">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-purple-600 h-3 rounded-full" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-ai-ml">Inteligência Artificial &
-                                    Machine Learning</span>
-                                <span class="text-gray-400 text-sm">80%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-green-600 h-3 rounded-full" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-data-analysis">Análise de
-                                    Dados</span>
-                                <span class="text-gray-400 text-sm">75%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-red-600 h-3 rounded-full" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white"
-                                    key-language="skill-data-structures-algorithms">Estrutura de Dados e
-                                    Algoritmos</span>
-                                <span class="text-gray-400 text-sm">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-yellow-600 h-3 rounded-full" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div data-aos="fade-right" data-aos-delay="200">
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-6" key-language="skills-complementary-title">
-                        Complementares</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-advanced-english">Inglês Avançado
-                                    (C1)</span>
-                                <span class="text-gray-400 text-sm">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-blue-400 h-3 rounded-full" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white"
-                                    key-language="skill-entrepreneurial-thinking">Pensamento Empreendedor</span>
-                                <span class="text-gray-400 text-sm">80%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-green-400 h-3 rounded-full" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-problem-solving">Resolução de
-                                    Problemas</span>
-                                <span class="text-gray-400 text-sm">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-red-400 h-3 rounded-full" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-communication">Comunicação</span>
-                                <span class="text-gray-400 text-sm">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-3">
-                                <div class="bg-purple-400 h-3 rounded-full" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg text-white" key-language="skill-time-coded">Tempo de Código</span>
-                            </div>
-                            <div class="">
-                                <a href="https://wakatime.com/@cc389d26-71f3-4d80-915a-2c56372ee434"><img
-                                        src="https://wakatime.com/badge/user/cc389d26-71f3-4d80-915a-2c56372ee434.svg"
-                                        alt="Total time coded since Oct 27 2024" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projetos" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-white text-center mb-12" key-language="projects-title">Meus Projetos</h2>
-
-            <div class="mb-16">
-                <h3 class="text-3xl font-semibold text-blue-400 text-center mb-8" data-aos="fade-right"
-                    key-language="projects-private-title">Projetos Privados</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 flex flex-col"
-                        data-aos="zoom-in" data-aos-delay="100">
-                        <img src="assets/SigmaChallengeLP.png" alt="Preview SigmaChallenge"
-                            class="w-full h-48 object-cover rounded-md mb-4 border border-gray-700">
-                        <h4 class="text-2xl font-bold text-white mb-2" key-language="project-sigmachallenge-title">
-                            SigmaChallenge - Landing Page</h4>
-                        <p class="text-gray-400 mb-4" key-language="project-sigmachallenge-description">Desenvolvimento
-                            de uma landing page otimizada para captação de
-                            leads em um projeto privado de inovação.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-webdev">Web
-                                Development</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-typescript">TypeScript</span>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 flex flex-col"
-                        data-aos="zoom-in" data-aos-delay="200">
-                        <h5 alt="Preview Projeto Privado 2"
-                            class="flex text-2xl font-bold h-48 text-center items-center justify-center mb-4 border border-gray-700"
-                            key-language="em-desenvolvimento">Em Desenvolvimento</h5>
-                        <h4 class="text-2xl font-bold text-white mb-2" key-language="project-SiteNeoNES-title">Site NEO
-                            NES</h4>
-                        <p class="text-gray-400 mb-4" key-language="project-SiteNeoNES-description">Em parceria com a
-                            Secretaria de Saúde de Alagoas, este projeto tem como foco a construção de um site educativo
-                            voltado para o treinamento de profissionais de saúde e famílias que cuidam de recém-nascidos
-                            prematuros de alto risco. O site oferecerá vídeos, guias práticos e conteúdos interativos.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-techx">Tecnologia
-                                X</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-methody">Metodologia
-                                Y</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-3xl font-semibold text-blue-400 text-center mb-8" data-aos="fade-right"
-                    key-language="projects-public-title">Projetos Públicos
-                    (GitHub)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 flex flex-col"
-                        data-aos="zoom-in" data-aos-delay="100">
-                        <img src="assets/RealTimeEmotionDetection.png" alt="Preview Detector de Emoções"
-                            class="w-full h-48 object-cover rounded-md mb-4 border border-gray-700">
-                        <h4 class="text-2xl font-bold text-white mb-2" key-language="project-emotion-detection-title">
-                            Realtime Emotion Detection</h4>
-                        <p class="text-gray-400 mb-4" key-language="project-emotion-detection-description">Modelo de IA
-                            que utiliza a câmera do computador para detectar e
-                            classificar emoções faciais em tempo real.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-dataanalysis">Análise
-                                de Dados</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-machinelearning">Aprendizado
-                                de Máquina</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-python">Python</span>
-                        </div>
-                        <div class="mt-auto"> <a href="https://github.com/PedroVNeves/Realtime-Emotion-Detection" target="_blank" class="text-blue-400 hover:underline"
-                                key-language="view-on-github">Ver no
-                                GitHub &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 flex flex-col"
-                        data-aos="zoom-in" data-aos-delay="200">
-                        <img src="assets/DaquiPraoMundoLP.png" alt="Preview Daqui Pra o Mundo"
-                            class="w-full h-48 object-cover rounded-md mb-4 border border-gray-700">
-                        <h4 class="text-2xl font-bold text-white mb-2" key-language="project-daquipraomundo-title">
-                            Projeto "Daqui Pra o Mundo"</h4>
-                        <p class="text-gray-400 mb-4" key-language="project-daquipraomundo-description">Website
-                            interativo e responsivo para o programa de intercâmbio Daqui Pra o Mundo,
-                            desenvolvido com HTML, CSS (Tailwind) e JavaScript. Em parceria com a Secretaria de
-                            Comunicação de Alagoas e o ITEC.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-html">HTML</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-css-tailwind">CSS
-                                (Tailwind)</span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-javascript">JavaScript</span>
-                        </div>
-                        <div class="mt-auto">
-                            <a href="https://github.com/PedroVNeves/LPDPM" target="_blank"
-                                class="text-blue-400 hover:underline" key-language="view-on-github">Ver no GitHub
-                                &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 flex flex-col"
-                        data-aos="zoom-in" data-aos-delay="300">
-                        <img src="assets/CollegeBoard.png" alt="CollegeBoard"
-                            class="w-full h-48 object-cover rounded-md mb-4 border border-gray-700">
-                        <h4 class="text-2xl font-bold text-white mb-2" key-language="project-CollegeBoard-title">College
-                            Board</h4>
-                        <p class="text-gray-400 mb-4" key-language="project-CollegeBoard-description">Site informativo
-                            sobre dados de Unviversidade no exterior, com simulação de probabilidade de aprovação
-                            baseada na nota do SAT. Projeto desenvolvido para a disciplina de Prática e Pesquisa do NES.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-JWT">JWT
-                            </span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-React">React
-                            </span>
-                            <span class="inline-block bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
-                                key-language="tag-dataanalysis">Análise de Dados
-                            </span>
-                        </div>
-                        <div class="mt-auto">
-                            <a href="https://github.com/TiagoCavalcante/NES-final-project" target="_blank" class="text-blue-400 hover:underline"
-                                key-language="view-on-github">Ver no GitHub &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
-                    <a href="https://github.com/PedroVNeves" target="_blank"
-                        class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 rgb-border"
-                        key-language="view-more-projects">
-                        Ver Mais Projetos no GitHub &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="certificados" class="py-20 bg-gray-800">
-        <div class="container mx-auto px-6" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-white text-center mb-12" key-language="education-title">Olimpíadas &
-                Educação</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div data-aos="fade-right" data-aos-delay="100">
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-6" key-language="olympiads-title">Olimpíadas</h3>
-                    <div class="space-y-6">
-                        <a href="LINK_DO_CERTIFICADO_OBMEP_2024_PRATA_NACIONAL" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="obmep-2024-silver-title">Medalha
+                            <div>
+                                <h4 class="text-lg font-bold text-white" key-language="obmep-2024-silver-title">Medalha
                                     de Prata (Nacional) - OBMEP 2024</h4>
-                                <p class="text-gray-300 text-sm" key-language="obmep-description">Olimpíada Brasileira
-                                    de Matemática das Escolas
+                                <p class="text-slate-400 text-sm">Olimpíada Brasileira de Matemática das Escolas
                                     Públicas.</p>
                             </div>
-                        </a>
-                        <a href="LINK_DO_CERTIFICADO_OBMEP_2024_OURO_REGIONAL" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="obmep-2024-gold-title">Medalha de
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-trophy text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white" key-language="obmep-2024-gold-title">Medalha de
                                     Ouro (Regional) - OBMEP 2024</h4>
-                                <p class="text-gray-300 text-sm" key-language="obmep-description">Olimpíada Brasileira
-                                    de Matemática das Escolas
-                                    Públicas.</p>
                             </div>
-                        </a>
-                        <a href="LINK_DO_CERTIFICADO_OBMEP_2023_MENCAO_HONROSA_NACIONAL" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white"
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-400/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-award text-slate-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white"
                                     key-language="obmep-2023-honorable-mention-title">Menção Honrosa (Nacional) - OBMEP
                                     2023</h4>
-                                <p class="text-gray-300 text-sm" key-language="obmep-description">Olimpíada Brasileira
-                                    de Matemática das Escolas
-                                    Públicas.</p>
                             </div>
-                        </a>
-                        <a href="LINK_DO_CERTIFICADO_OBMEP_2023_PRATA_REGIONAL" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="obmep-2023-silver-title">Medalha
-                                    de Prata (Regional) - OBMEP 2023</h4>
-                                <p class="text-gray-300 text-sm" key-language="obmep-description">Olimpíada Brasileira
-                                    de Matemática das Escolas
-                                    Públicas.</p>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-400/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-medal text-slate-300"></i>
                             </div>
-                        </a>
-                        <a href="LINK_DO_CERTIFICADO_OBMEP_2022_BRONZE_NACIONAL" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="obmep-2022-bronze-title">Medalha
-                                    de Bronze (Nacional) - OBMEP 2022</h4>
-                                <p class="text-gray-300 text-sm" key-language="obmep-description">Olimpíada Brasileira
-                                    de Matemática das Escolas
-                                    Públicas.</p>
-                            </div>
-                        </a>
-                        <a href="LINK_DO_CERTIFICADO_OAM_2021_PRATA" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="oam-2021-silver-title">Medalha de
+                            <div>
+                                <h4 class="text-lg font-bold text-white" key-language="oam-2021-silver-title">Medalha de
                                     Prata - OAM 2021</h4>
-                                <p class="text-gray-300 text-sm" key-language="oam-description">Olimpíada Alagoana de
-                                    Matemática.</p>
+                                <p class="text-slate-400 text-sm">Olimpíada Alagoana de Matemática.</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
-                <div data-aos="fade-right" data-aos-delay="200">
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-6" key-language="education-courses-title">
-                        Educação & Cursos</h3>
+                <!-- Education & Courses -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3"
+                        key-language="education-courses-title">
+                        <i class="fas fa-graduation-cap text-fuchsia-400"></i> Educação & Cursos
+                    </h3>
                     <div class="space-y-6">
-                        <a href="assets\certificadoC1.pdf" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="certificate-english-c1-title">
-                                    Certificado de Inglês Avançado (C1)</h4>
-                                <p class="text-gray-300 text-sm" key-language="certificate-english-c1-description">
-                                    Comprovante de proficiência em inglês, nível C1.</p>
-                                <p class="text-blue-400 mt-2 text-md" key-language="click-to-see">Clique para ver</p>
+                        <a href="assets/Certificado_EF_SET_English.pdf" target="_blank"
+                            class="block p-4 rounded-xl hover:bg-white/5 transition duration-300 border border-transparent hover:border-white/10 group">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white group-hover:text-indigo-400 transition"
+                                    key-language="certificate-english-c1-title">Inglês Avançado (C1)</h4>
+                                <i class="fas fa-external-link-alt text-slate-500 group-hover:text-indigo-400"></i>
                             </div>
-                        </a>
-                        <a href="LINK_DO_SEU_PROGRAMA_DAQUI_PARA_O_MUNDO" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="program-daquipraomundo-title">
-                                    Programa "Daqui Pra o Mundo" - Intercâmbio
-                                    Inglaterra</h4>
-                                <p class="text-gray-300 text-sm" key-language="program-daquipraomundo-description">
-                                    Experiência internacional de intercâmbio educacional e
-                                    cultural.</p>
-                            </div>
-                        </a>
-                        <a href="LINK_DO_SEU_SIGMACAMP_NEXT" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="sigmacamp-next-title">SigmaCamp
-                                    Next 2025 (Aprovado)</h4>
-                                <p class="text-gray-300 text-sm" key-language="sigmacamp-next-description">Aprovação em
-                                    renomado programa de verão em ciência e
-                                    engenharia.</p>
-                            </div>
+                            <p class="text-slate-400 text-sm" key-language="certificate-english-c1-description">
+                                Comprovante de proficiência em inglês.</p>
                         </a>
 
-                        <a href="#" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="highschool-title">Ensino Médio
-                                    (3º Ano)</h4>
-                                <p class="text-gray-300 text-sm" key-language="highschool-description">Concluindo o
-                                    ensino médio com foco em áreas de exatas.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="nes-module4-title">NES - Módulo
-                                    IV (Cursando)</h4>
-                                <ul class="list-disc list-inside text-gray-300 text-sm mt-2">
-                                    <li key-language="nes-module4-calc3">Cálculo 3</li>
-                                    <li key-language="nes-module4-graphtheory">Teoria dos Grafos</li>
-                                    <li key-language="nes-module4-neuralnetworks">Redes Neurais</li>
-                                </ul>
-                            </div>
-                        </a>
-                        <a href="#" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="nes-module3-title">NES - Módulo
-                                    III</h4>
-                                <ul class="list-disc list-inside text-gray-300 text-sm mt-2">
-                                    <li key-language="nes-module3-ai">Inteligência Artificial</li>
-                                    <li key-language="nes-module3-linearalgebra">Álgebra Linear e Aplicações</li>
-                                    <li key-language="nes-module3-datastructures">Estrutura de Dados e Algoritmos</li>
-                                </ul>
-                            </div>
-                        </a>
+                        <div class="p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <h4 class="text-lg font-bold text-white mb-1" key-language="nes-module4-title">NES - Módulo
+                                IV (Cursando)</h4>
+                            <p class="text-slate-400 text-sm">Cálculo 3, Teoria dos Grafos, Redes Neurais.</p>
+                        </div>
 
-                        <a href="assets\NesMod-I-II.pdf" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="nes-module2-title">NES - Módulo
-                                    II</h4>
-                                <ul class="list-disc list-inside text-gray-300 text-sm mt-2">
-                                    <li key-language="nes-module2-oop">Programação Orientada a Objetos</li>
-                                    <li key-language="nes-module2-calc1">Cálculo 1</li>
-                                    <li key-language="nes-module2-linearalgebra">Álgebra Linear</li>
-                                </ul>
-                                <p class="text-blue-400 mt-2 text-md" key-language="click-to-see">Clique para ver</p>
-                            </div>
-                        </a>
-                        <a href="assets\NesMod-I-II.pdf" target="_blank"
-                            class="block rounded-lg bg-gray-900  shadow-md hover:shadow-xl hover:bg-gray-600 transform hover:scale-105 transition duration-300">
-                            <div class="p-5">
-                                <h4 class="text-xl font-bold text-white" key-language="nes-module1-title">NES - Módulo I
-                                </h4>
-                                <ul class="list-disc list-inside text-gray-300 text-sm mt-2">
-                                    <li key-language="nes-module1-structured-programming">Programação Estruturada</li>
-                                    <li key-language="nes-module1-functions-matrices">Funções Elementares e Matrizes
-                                    </li>
-                                    <li key-language="nes-module1-probability-statistics">Probabilidade e Estatística
-                                    </li>
-                                </ul>
-                                <p class="text-blue-400 mt-2 text-md" key-language="click-to-see">Clique para ver</p>
-                            </div>
-                        </a>
+                        <div class="p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <h4 class="text-lg font-bold text-white mb-1" key-language="nes-module3-title">NES - Módulo
+                                III</h4>
+                            <p class="text-slate-400 text-sm">IA, Álgebra Linear, Estrutura de Dados.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl hover:bg-white/5 transition duration-300">
+                            <h4 class="text-lg font-bold text-white mb-1" key-language="program-daquipraomundo-title">
+                                Programa "Daqui Pra o Mundo"</h4>
+                            <p class="text-slate-400 text-sm">Intercâmbio na Inglaterra (Aprovado).</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-white text-center mb-12" key-language="contact-title">Entre em Contato
-            </h2>
+    <!-- Contact Section -->
+    <section id="contato" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" key-language="contact-title">Entre em Contato
+                </h2>
+                <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 text-lg max-w-2xl mx-auto">
+                    Estou sempre aberto a novas oportunidades e projetos interessantes. Vamos construir algo incrível
+                    juntos!
+                </p>
+            </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12 text-center">
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <a href="mailto:pedro.vasconcelosneves@gmail.com" target="_blank"
-                        class="text-blue-400 hover:text-blue-300 transition duration-300">
-                        <i class="fas fa-envelope text-4xl mb-4"></i>
-                        <h4 class="text-xl font-semibold text-white" key-language="contact-email">Email</h4>
-                    </a>
-                    <p class="text-gray-400">pedro.vasconcelos<br>neves@gmail.com</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <a href="https://www.linkedin.com/in/pedro-vasconcelos-neves" target="_blank"
-                        class="text-blue-400 hover:text-blue-300 transition duration-300">
-                        <i class="fab fa-linkedin text-4xl mb-4"></i>
-                        <h4 class="text-xl font-semibold text-white" key-language="contact-linkedin">LinkedIn</h4>
-                    </a>
-                    <p class="text-gray-400">pedro-vasconcelos-neves</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-                    <a href="https://www.instagram.com/o_pedro.neves" target="_blank"
-                        class="text-blue-400 hover:text-blue-300 transition duration-300">
-                        <i class="fab fa-instagram text-4xl mb-4"></i>
-                        <h4 class="text-xl font-semibold text-white" key-language="contact-instagram">Instagram</h4>
-                    </a>
-                    <p class="text-gray-400">@o_pedro.neves</p>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Email -->
+                <a href="mailto:pedro.vasconcelosneves@gmail.com"
+                    class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-500 transition duration-300">
+                        <i class="fas fa-envelope text-2xl text-indigo-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" key-language="contact-email">Email</h4>
+                    <p class="text-slate-400 text-sm break-all">pedro.vasconcelosneves@gmail.com</p>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/pedro-vasconcelos-neves" target="_blank"
+                    class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-500 transition duration-300">
+                        <i class="fab fa-linkedin-in text-2xl text-blue-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" key-language="contact-linkedin">LinkedIn</h4>
+                    <p class="text-slate-400 text-sm">Conecte-se comigo</p>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/o_pedro.neves" target="_blank"
+                    class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 bg-fuchsia-500/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-fuchsia-500 transition duration-300">
+                        <i class="fab fa-instagram text-2xl text-fuchsia-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" key-language="contact-instagram">Instagram</h4>
+                    <p class="text-slate-400 text-sm">Siga meu dia a dia</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 py-8 text-gray-400 text-center text-sm">
-        <div class="container mx-auto px-6">
-            <p key-language="footer-copyright">&copy; 2025 Seu Pedro Neves. Todos os direitos reservados.</p>
-            <p class="mt-2" key-language="footer-made-with">Feito com paixão por <span
-                    class="text-blue-400">código</span> e um toque de <span class="text-purple-400">inovação</span>.
+    <!-- Footer -->
+    <footer class="bg-black/40 backdrop-blur-md border-t border-white/5 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <span
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-fuchsia-400">
+                    Pedro Neves
+                </span>
+            </div>
+            <p class="text-slate-500 text-sm mb-4" key-language="footer-copyright">&copy; 2025 Pedro Neves. Todos os
+                direitos reservados.</p>
+            <p class="text-slate-500 text-sm flex items-center justify-center gap-2" key-language="footer-made-with">
+                Feito com <i class="fas fa-heart text-rose-500 animate-pulse"></i> e <span
+                    class="text-indigo-400 font-medium">código</span>
             </p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Key-value pairs for translations
+        // Translations
         const translations = {
             pt: {
                 "home-nav": "Início",
                 "about-nav": "Sobre Mim",
+                "skills-nav": "Habilidades",
                 "projects-nav": "Projetos",
-                "certificates-nav": "Certificados",
+                "certificates-nav": "Educação",
                 "contact-nav": "Contato",
+
                 "home-mobile-nav": "Início",
                 "about-mobile-nav": "Sobre Mim",
+                "skills-mobile-nav": "Habilidades",
                 "projects-mobile-nav": "Projetos",
-                "certificates-mobile-nav": "Certificados",
+                "certificates-mobile-nav": "Educação",
                 "contact-mobile-nav": "Contato",
-                "hero-title": "Olá, sou <span class=\"text-blue-400\">Pedro Neves</span>.",
-                "hero-subtitle": "Um <span class=\"font-bold text-blue-300\">Jovem Desenvolvedor</span> buscando inovação.",
-                "skill-english": "Inglês Avançado (C1)",
-                "skill-webdev": "Desenvolvedor Web",
-                "skill-ai": "Inteligência Artificial",
-                "skill-dataanalysis": "Análise de Dados",
-                "skill-entrepreneurial": "Pensamento Empreendedor",
+
+                "hero-subtitle": "Um <span class=\"font-semibold text-indigo-300\">Jovem Desenvolvedor</span> transformando ideias em inovação digital.",
+
                 "about-title": "Sobre Mim",
                 "about-p1": "Sou um jovem de 17 anos, apaixonado por tecnologia e inovação, com uma jornada de aprendizado contínuo no NES. Atualmente, estou finalizando o terceiro ano do ensino médio e sempre buscando aplicar o conhecimento em projetos práticos.",
                 "about-p2": "Minha experiência inclui o desenvolvimento de landing pages para projetos como o SigmaChallenge, demonstrando minha habilidade em criar interfaces web eficazes. Tenho um forte interesse em Inteligência Artificial, onde já desenvolvi um modelo que detecta emoções usando OpenCV.",
-                "about-p3": "Sou um entusiasta de competições acadêmicas, sendo medalhista da OBMEP e da OAM. Fui aprovado no prestigioso programa \"Daqui Pra o Mundo\", que me proporcionou um intercâmbio na Inglaterra. Também fui aceito no SigmaCamp Next 2025, uma prova do meu potencial na área de exatas.",
-                "about-p4": "No NES, cursei módulos avançados que aprofundaram meus conhecimentos em: Programação Estruturada e Orientada a Objetos, Cálculos, Álgebra Linear, Probabilidade e Estatística, Estrutura de Dados e Algoritmos, e Inteligência Artificial. Estou agora ingressando no Módulo IV, expandindo ainda mais minhas habilidades.",
+                "about-p3": "Sou um entusiasta de competições acadêmicas, sendo medalhista da OBMEP e da OAM. Fui aprovado no prestigioso programa \"Daqui Pra o Mundo\", que me proporcionou um intercâmbio na Inglaterra.",
+
                 "skills-title": "Minhas Habilidades",
-                "skills-technical-title": "Técnicas",
-                "skill-programming-languages": "Linguagens de Programação (Python, JS, etc.)",
-                "skill-web-development": "Desenvolvimento Web (Front-end)",
-                "skill-ai-ml": "Inteligência Artificial & Machine Learning",
+                "skills-technical-title": "<i class=\"fas fa-laptop-code text-indigo-400\"></i> Hard Skills",
+                "skill-programming-languages": "Linguagens (Python, JS)",
+                "skill-web-development": "Desenvolvimento Web",
+                "skill-ai-ml": "IA & Machine Learning",
                 "skill-data-analysis": "Análise de Dados",
-                "skill-data-structures-algorithms": "Estrutura de Dados e Algoritmos",
-                "skills-complementary-title": "Complementares",
                 "skill-advanced-english": "Inglês Avançado (C1)",
-                "skill-entrepreneurial-thinking": "Pensamento Empreendedor",
+                "skill-entrepreneurial-thinking": "Empreendedorismo",
                 "skill-problem-solving": "Resolução de Problemas",
-                "skill-communication": "Comunicação",
                 "skill-time-coded": "Tempo de Código",
+
                 "projects-title": "Meus Projetos",
-                "projects-private-title": "Projetos Privados",
+                "projects-private-title": "<i class=\"fas fa-lock\"></i> Projetos Privados",
+                "projects-public-title": "<i class=\"fab fa-github\"></i> Projetos Públicos",
                 "project-sigmachallenge-title": "SigmaChallenge - Landing Page",
                 "project-sigmachallenge-description": "Desenvolvimento de uma landing page otimizada para captação de leads em um projeto privado de inovação.",
-                "tag-webdev": "Desenvolvimento Web",
-                "tag-typescript": "TypeScript",
-                "em-desenvolvimento": "Em Desenvolvimento",
-                "project-SiteNeoNES-title": "Site NeoNES",
-                "project-SiteNeoNES-description": "Em parceria com a Secretaria de Saúde de Alagoas, este projeto tem como foco a construção de um site educativo voltado para o treinamento de profissionais de saúde e famílias que cuidam de recém-nascidos prematuros de alto risco. O site oferecerá vídeos, guias práticos e conteúdos interativos.",
-                "tag-techx": "Tecnologia X",
-                "tag-methody": "Metodologia Y",
-                "projects-public-title": "Projetos Públicos (GitHub)",
+                "project-SiteCanguru-title": "Site Canguru",
+                "project-SiteCanguru-description": "Site educativo para treinamento de profissionais de saúde e famílias de recém-nascidos de alto risco.",
                 "project-emotion-detection-title": "Realtime Emotion Detection",
-                "project-emotion-detection-description": "Modelo de IA que utiliza a câmera do computador para detectar e classificar emoções faciais em tempo real.",
-                "tag-dataanalysis": "Análise de Dados",
-                "tag-machinelearning": "Aprendizado de Máquina",
-                "tag-python": "Python",
-                "view-on-github": "Ver no GitHub &rarr;",
+                "project-emotion-detection-description": "Modelo de IA que detecta e classifica emoções faciais em tempo real via webcam.",
                 "project-daquipraomundo-title": "Projeto \"Daqui Pra o Mundo\"",
-                "project-daquipraomundo-description": "Website interativo e responsivo para o programa de intercâmbio Daqui Pra o Mundo, desenvolvido com HTML, CSS(Tailwind) e JavaScript. Em parceria com a Secretaria de Comunicação de Alagoas e o ITEC.",
-                "tag-html": "HTML",
-                "tag-css-tailwind": "CSS (Tailwind)",
-                "tag-javascript": "JavaScript",
+                "project-daquipraomundo-description": "Website interativo para programa de intercâmbio, desenvolvido com HTML, Tailwind e JS.",
                 "project-CollegeBoard-title": "College Board",
-                "project-CollegeBoard-description": "Site informativo sobre dados de Unviversidade no exterior, com simulação de probabilidade de aprovação baseada na nota do SAT. Projeto desenvolvido para a disciplina de Prática e Pesquisa do NES.",
-                "tag-JWT": "JWT",
-                "tag-React": "React",
-                "view-more-projects": "Ver Mais Projetos no GitHub &rarr;",
-                "education-title": "Olimpíadas & Educação",
-                "olympiads-title": "Olimpíadas",
+                "project-CollegeBoard-description": "Simulação de probabilidade de aprovação em universidades baseada em notas SAT.",
+                "project-RAG_LOCAL-title": "RAG Local",
+
+                "education-title": "Educação & Conquistas",
+                "olympiads-title": "<i class=\"fas fa-medal text-yellow-400\"></i> Olimpíadas",
+                "education-courses-title": "<i class=\"fas fa-graduation-cap text-fuchsia-400\"></i> Educação & Cursos",
                 "obmep-2024-silver-title": "Medalha de Prata (Nacional) - OBMEP 2024",
-                "obmep-description": "Olimpíada Brasileira de Matemática das Escolas Públicas.",
                 "obmep-2024-gold-title": "Medalha de Ouro (Regional) - OBMEP 2024",
                 "obmep-2023-honorable-mention-title": "Menção Honrosa (Nacional) - OBMEP 2023",
-                "obmep-2023-silver-title": "Medalha de Prata (Regional) - OBMEP 2023",
-                "obmep-2022-bronze-title": "Medalha de Bronze (Nacional) - OBMEP 2022",
                 "oam-2021-silver-title": "Medalha de Prata - OAM 2021",
-                "oam-description": "Olimpíada Alagoana de Matemática.",
-                "education-courses-title": "Educação & Cursos",
-                "certificate-english-c1-title": "Certificado de Inglês Avançado (C1)",
-                "certificate-english-c1-description": "Comprovante de proficiência em inglês, nível C1.",
-                "click-to-see": "Clique para ver",
-                "program-daquipraomundo-title": "Programa \"Daqui Pra o Mundo\" - Intercâmbio Inglaterra",
-                "program-daquipraomundo-description": "Experiência internacional de intercâmbio educacional e cultural.",
-                "sigmacamp-next-title": "SigmaCamp Next 2025 (Aprovado)",
-                "sigmacamp-next-description": "Aprovação em renomado programa de verão em ciência e engenharia.",
-                "highschool-title": "Ensino Médio (3º Ano)",
-                "highschool-description": "Concluindo o ensino médio com foco em áreas de exatas.",
+                "certificate-english-c1-title": "Inglês Avançado (C1)",
+                "certificate-english-c1-description": "Comprovante de proficiência em inglês.",
                 "nes-module4-title": "NES - Módulo IV (Cursando)",
-                "nes-module4-calc3": "Cálculo 3",
-                "nes-module4-graphtheory": "Teoria dos Grafos",
-                "nes-module4-neuralnetworks": "Redes Neurais",
                 "nes-module3-title": "NES - Módulo III",
-                "nes-module3-ai": "Inteligência Artificial",
-                "nes-module3-linearalgebra": "Álgebra Linear e Aplicações",
-                "nes-module3-datastructures": "Estrutura de Dados e Algoritmos",
-                "nes-module2-title": "NES - Módulo II",
-                "nes-module2-oop": "Programação Orientada a Objetos",
-                "nes-module2-calc1": "Cálculo 1",
-                "nes-module2-linearalgebra": "Álgebra Linear",
-                "nes-module1-title": "NES - Módulo I",
-                "nes-module1-structured-programming": "Programação Estruturada",
-                "nes-module1-functions-matrices": "Funções Elementares e Matrizes",
-                "nes-module1-probability-statistics": "Probabilidade e Estatística",
+                "program-daquipraomundo-title": "Programa \"Daqui Pra o Mundo\"",
+
                 "contact-title": "Entre em Contato",
                 "contact-email": "Email",
                 "contact-linkedin": "LinkedIn",
                 "contact-instagram": "Instagram",
-                "footer-copyright": "&copy; 2025 Seu Pedro Neves. Todos os direitos reservados.",
-                "footer-made-with": "Feito com paixão por <span class=\"text-blue-400\">código</span> e um toqueproje de <span class=\"text-purple-400\">inovação</span>."
+                "footer-copyright": "&copy; 2025 Pedro Neves. Todos os direitos reservados.",
+                "footer-made-with": "Feito com <i class=\"fas fa-heart text-rose-500 animate-pulse\"></i> e <span class=\"text-indigo-400 font-medium\">código</span>"
             },
             en: {
                 "home-nav": "Home",
                 "about-nav": "About Me",
+                "skills-nav": "Skills",
                 "projects-nav": "Projects",
-                "certificates-nav": "Certificates",
+                "certificates-nav": "Education",
                 "contact-nav": "Contact",
+
                 "home-mobile-nav": "Home",
                 "about-mobile-nav": "About Me",
+                "skills-mobile-nav": "Skills",
                 "projects-mobile-nav": "Projects",
-                "certificates-mobile-nav": "Certificates",
+                "certificates-mobile-nav": "Education",
                 "contact-mobile-nav": "Contact",
-                "hero-title": "Hi, I'm <span class=\"text-blue-400\">Pedro Neves</span>.",
-                "hero-subtitle": "A <span class=\"font-bold text-blue-300\">Young Developer</span> seeking innovation.",
-                "skill-english": "Advanced English (C1)",
-                "skill-webdev": "Web Developer",
-                "skill-ai": "Artificial Intelligence",
-                "skill-dataanalysis": "Data Analysis",
-                "skill-entrepreneurial": "Entrepreneurial Thinking",
+
+                "hero-subtitle": "A <span class=\"font-semibold text-indigo-300\">Young Developer</span> transforming ideas into digital innovation.",
+
                 "about-title": "About Me",
                 "about-p1": "I'm a 17-year-old passionate about technology and innovation, on a continuous learning journey at NES. Currently, I'm finishing my third year of high school and always looking to apply knowledge in practical projects.",
                 "about-p2": "My experience includes developing landing pages for projects like SigmaChallenge, demonstrating my ability to create effective web interfaces. I have a strong interest in Artificial Intelligence, where I have already developed a model that detects emotions using OpenCV.",
-                "about-p3": "I am an enthusiast of academic competitions, being a medalist of OBMEP and OAM. I was accepted into the prestigious \"Daqui Pra o Mundo\" program, which provided me with an exchange in England. I was also accepted into SigmaCamp Next 2025, a testament to my potential in exact sciences.",
-                "about-p4": "At NES, I completed advanced modules that deepened my knowledge in: Structured and Object-Oriented Programming, Calculus, Linear Algebra, Probability and Statistics, Data Structures and Algorithms, and Artificial Intelligence. I am now entering Module IV, further expanding my skills.",
+                "about-p3": "I am an enthusiast of academic competitions, being a medalist of OBMEP and OAM. I was accepted into the prestigious \"Daqui Pra o Mundo\" program, which provided me with an exchange in England.",
+
                 "skills-title": "My Skills",
-                "skills-technical-title": "Technical",
-                "skill-programming-languages": "Programming Languages (Python, JS, etc.)",
-                "skill-web-development": "Web Development (Front-end)",
-                "skill-ai-ml": "Artificial Intelligence & Machine Learning",
+                "skills-technical-title": "<i class=\"fas fa-laptop-code text-indigo-400\"></i> Hard Skills",
+                "skill-programming-languages": "Languages (Python, JS)",
+                "skill-web-development": "Web Development",
+                "skill-ai-ml": "AI & Machine Learning",
                 "skill-data-analysis": "Data Analysis",
-                "skill-data-structures-algorithms": "Data Structures and Algorithms",
-                "skills-complementary-title": "Complementary",
                 "skill-advanced-english": "Advanced English (C1)",
                 "skill-entrepreneurial-thinking": "Entrepreneurial Thinking",
                 "skill-problem-solving": "Problem Solving",
-                "skill-communication": "Communication",
                 "skill-time-coded": "Time Coded",
+
                 "projects-title": "My Projects",
-                "projects-private-title": "Private Projects",
+                "projects-private-title": "<i class=\"fas fa-lock\"></i> Private Projects",
+                "projects-public-title": "<i class=\"fab fa-github\"></i> Public Projects",
                 "project-sigmachallenge-title": "SigmaChallenge - Landing Page",
                 "project-sigmachallenge-description": "Development of an optimized landing page for lead capture in a private innovation project.",
-                "tag-webdev": "Web Development",
-                "tag-typescript": "TypeScript",
-                "em-desenvolvimento": "Developing",
-                "project-SiteNeoNES-title": "NeoNES Site",
-                "project-SiteNeoNES-description": "In partnership with the Alagoas Department of Health, this project focuses on building an educational website to train healthcare professionals and families caring for high-risk premature newborns. The website will offer videos, practical guides, and interactive content.",
-                "tag-techx": "Technology X",
-                "tag-methody": "Methodology Y",
-                "projects-public-title": "Public Projects (GitHub)",
+                "project-SiteCanguru-title": "Canguru Site",
+                "project-SiteCanguru-description": "Educational website for training healthcare professionals and families of high-risk newborns.",
                 "project-emotion-detection-title": "Realtime Emotion Detection",
-                "project-emotion-detection-description": "AI model that uses the computer camera to detect and classify facial emotions in real time.",
-                "tag-dataanalysis": "Data Analysis",
-                "tag-machinelearning": "Machine Learning",
-                "tag-python": "Python",
-                "view-on-github": "View on GitHub &rarr;",
+                "project-emotion-detection-description": "AI model that detects and classifies facial emotions in real-time via webcam.",
                 "project-daquipraomundo-title": "Project \"Daqui Pra o Mundo\"",
-                "project-daquipraomundo-description": "Interactive and responsive website for the Daqui Pra o Mundo exchange program, developed with HTML, CSS (Tailwind) and JavaScript. In partnership with the Alagoas Communications Secretariat and ITEC.",
-                "tag-html": "HTML",
-                "tag-css-tailwind": "CSS (Tailwind)",
-                "tag-javascript": "JavaScript",
+                "project-daquipraomundo-description": "Interactive website for exchange program, developed with HTML, Tailwind and JS.",
                 "project-CollegeBoard-title": "College Board",
-                "project-CollegeBoard-description": "Informational website about university data abroad, with a simulation of the probability of an offer based on SAT scores. This project was developed for the NES Practice and Research course.",
-                "tag-JWT": "JWT",
-                "tag-React": "React",
-                "view-more-projects": "View More Projects on GitHub &rarr;",
-                "education-title": "Olympiads & Education",
-                "olympiads-title": "Olympiads",
+                "project-CollegeBoard-description": "Simulation of university acceptance probability based on SAT scores.",
+                "project-RAG_LOCAL-title": "Local RAG",
+
+                "education-title": "Education & Achievements",
+                "olympiads-title": "<i class=\"fas fa-medal text-yellow-400\"></i> Olympiads",
+                "education-courses-title": "<i class=\"fas fa-graduation-cap text-fuchsia-400\"></i> Education & Courses",
                 "obmep-2024-silver-title": "Silver Medal (National) - OBMEP 2024",
-                "obmep-description": "Brazilian Public School Mathematics Olympiad.",
                 "obmep-2024-gold-title": "Gold Medal (Regional) - OBMEP 2024",
                 "obmep-2023-honorable-mention-title": "Honorable Mention (National) - OBMEP 2023",
-                "obmep-2023-silver-title": "Silver Medal (Regional) - OBMEP 2023",
-                "obmep-2022-bronze-title": "Bronze Medal (National) - OBMEP 2022",
                 "oam-2021-silver-title": "Silver Medal - OAM 2021",
-                "oam-description": "Alagoan Mathematics Olympiad.",
-                "education-courses-title": "Education & Courses",
-                "certificate-english-c1-title": "Advanced English Certificate (C1)",
-                "certificate-english-c1-description": "Proof of English proficiency, C1 level.",
-                "click-to-see": "Click to view",
-                "program-daquipraomundo-title": "Program \"Daqui Pra o Mundo\" - England Exchange",
-                "program-daquipraomundo-description": "International educational and cultural exchange experience.",
-                "sigmacamp-next-title": "SigmaCamp Next 2025 (Accepted)",
-                "sigmacamp-next-description": "Acceptance into renowned science and engineering summer program.",
-                "highschool-title": "High School (3rd Year)",
-                "highschool-description": "Completing high school with a focus on exact sciences.",
-                "nes-module4-title": "NES - Module IV (Currently Studying)",
-                "nes-module4-calc3": "Calculus 3",
-                "nes-module4-graphtheory": "Graph Theory",
-                "nes-module4-neuralnetworks": "Neural Networks",
+                "certificate-english-c1-title": "Advanced English (C1)",
+                "certificate-english-c1-description": "Proof of English proficiency.",
+                "nes-module4-title": "NES - Module IV (Current)",
                 "nes-module3-title": "NES - Module III",
-                "nes-module3-ai": "Artificial Intelligence",
-                "nes-module3-linearalgebra": "Linear Algebra and Applications",
-                "nes-module3-datastructures": "Data Structures and Algorithms",
-                "nes-module2-title": "NES - Module II",
-                "nes-module2-oop": "Object-Oriented Programming",
-                "nes-module2-calc1": "Calculus 1",
-                "nes-module2-linearalgebra": "Linear Algebra",
-                "nes-module1-title": "NES - Module I",
-                "nes-module1-structured-programming": "Structured Programming",
-                "nes-module1-functions-matrices": "Elementary Functions and Matrices",
-                "nes-module1-probability-statistics": "Probability and Statistics",
+                "program-daquipraomundo-title": "Program \"Daqui Pra o Mundo\"",
+
                 "contact-title": "Contact Me",
                 "contact-email": "Email",
                 "contact-linkedin": "LinkedIn",
                 "contact-instagram": "Instagram",
                 "footer-copyright": "&copy; 2025 Pedro Neves. All rights reserved.",
-                "footer-made-with": "Made with passion for <span class=\"text-blue-400\">code</span> and a touch of <span class=\"text-purple-400\">innovation</span>."
+                "footer-made-with": "Made with <i class=\"fas fa-heart text-rose-500 animate-pulse\"></i> and <span class=\"text-indigo-400 font-medium\">code</span>"
             }
         };
 
-        let currentLang = 'pt'; // Default language
+        let currentLang = 'pt';
 
         function applyTranslations() {
             document.querySelectorAll('[key-language]').forEach(element => {
@@ -944,6 +890,7 @@
         }
 
         function updateLanguageToggle(toggleElement) {
+            if (!toggleElement) return;
             toggleElement.querySelectorAll('.lang-option').forEach(option => {
                 if (option.dataset.lang === currentLang) {
                     option.classList.add('active');
@@ -953,59 +900,74 @@
             });
         }
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'pt' ? 'en' : 'pt';
-            document.documentElement.lang = currentLang; // Update HTML lang attribute
-            applyTranslations();
-            updateLanguageToggle(document.getElementById('language-toggle'));
-            updateLanguageToggle(document.getElementById('language-toggle-mobile'));
+        function toggleLanguage(e) {
+            if (e.target.classList.contains('lang-option')) {
+                const selectedLang = e.target.dataset.lang;
+                if (selectedLang !== currentLang) {
+                    currentLang = selectedLang;
+                    document.documentElement.lang = currentLang;
+                    applyTranslations();
+                    updateLanguageToggle(document.getElementById('language-toggle'));
+                    updateLanguageToggle(document.getElementById('language-toggle-mobile'));
+                }
+            }
         }
 
-        // Event listener for the desktop language toggle
-        document.getElementById('language-toggle').addEventListener('click', toggleLanguage);
-        // Event listener for the mobile language toggle
-        document.getElementById('language-toggle-mobile').addEventListener('click', toggleLanguage);
-
-        // Apply translations on page load
+        // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
             applyTranslations();
-            updateLanguageToggle(document.getElementById('language-toggle'));
-            updateLanguageToggle(document.getElementById('language-toggle-mobile'));
 
-            const scrollDownButton = document.getElementById('scroll-down-button');
-            const icon = scrollDownButton.querySelector('i');
-            if (icon) {
-                icon.classList.add('animate-bounce');
-            }
-            scrollDownButton.addEventListener('click', () => {
-                document.getElementById('sobre').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+            const desktopToggle = document.getElementById('language-toggle');
+            const mobileToggle = document.getElementById('language-toggle-mobile');
 
+            if (desktopToggle) desktopToggle.addEventListener('click', toggleLanguage);
+            if (mobileToggle) mobileToggle.addEventListener('click', toggleLanguage);
+
+            // AOS Init
             AOS.init({
                 once: true,
                 duration: 800,
-                easing: 'ease-in-out',
+                easing: 'ease-out-cubic',
+                offset: 100,
             });
 
+            // Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Scroll Down Button
+            const scrollBtn = document.getElementById('scroll-down-button');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', () => {
+                    document.getElementById('sobre').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('py-2');
+                    navbar.querySelector('.glass').classList.add('bg-black/60', 'backdrop-blur-xl');
+                } else {
+                    navbar.classList.remove('py-2');
+                    navbar.querySelector('.glass').classList.remove('bg-black/60', 'backdrop-blur-xl');
+                }
             });
         });
     </script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>
